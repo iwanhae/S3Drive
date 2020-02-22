@@ -41,6 +41,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
     '@nuxtjs/pwa'
   ],
   /*
@@ -48,6 +49,11 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+  proxy: {
+    '/dir': 'http://127.0.0.1:8000',
+    '/info': 'http://127.0.0.1:8000',
+    '/auth': 'http://127.0.0.1:8000'
+  },
   /*
    ** Build configuration
    */

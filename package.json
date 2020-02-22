@@ -1,41 +1,29 @@
 {
-  "name": "S3Drive",
+  "name": "s3drive",
   "version": "1.0.0",
-  "description": "Web based S3 explorer",
-  "author": "iwanhae",
-  "private": true,
+  "description": "S3 Explorer",
+  "main": "src/index.js",
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "test": "ava",
-    "test:unit": "cross-env TEST=unit ava ./test/specs/**/*",
-    "test:e2e": "cross-env TEST=e2e ava ./test/e2e/**/*"
+    "start": "node src",
+    "dev": "nodemon --watch src/ --exec node src/index.js"
   },
+  "repository": "https://github.com/LEE-WAN/S3Drive.git",
+  "author": "iwanhae",
+  "license": "Apache 2.0",
   "dependencies": {
-    "nuxt": "^2.0.0",
-    "element-ui": "^2.4.11",
-    "@nuxtjs/axios": "^5.3.6",
-    "@nuxtjs/pwa": "^3.0.0-0"
+    "@types/koa": "^2.11.0",
+    "aws-sdk": "^2.615.0",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.11.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^8.0.7",
+    "mime-types": "^2.1.26"
   },
   "devDependencies": {
-    "@nuxtjs/eslint-config": "^2.0.0",
-    "@nuxtjs/eslint-module": "^1.0.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^6.1.0",
-    "eslint-plugin-nuxt": ">=0.4.2",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-prettier": "^3.1.2",
-    "prettier": "^1.19.1",
-    "@vue/test-utils": "^1.0.0-beta.27",
-    "ava": "^3.0.0",
-    "@ava/babel": "^1.0.0",
-    "babel-plugin-module-resolver": "^3.2.0",
-    "browser-env": "^3.2.5",
-    "require-extension-hooks": "^0.3.3",
-    "require-extension-hooks-babel": "^1.0.0",
-    "require-extension-hooks-vue": "^2.0.0"
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "nodemon": "^2.0.2"
   }
 }
