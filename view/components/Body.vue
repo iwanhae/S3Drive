@@ -1,5 +1,11 @@
 <template>
-  <div style="width:100%;height:100%" @click.self="clearSelected">
+  <div
+    style="width:100%;height:100%"
+    @click.self="clearSelected"
+    @dragenter="onDragEnter"
+    @dragover="onDragover"
+    @drop="onDrop"
+  >
     <div class="breadcrumb" @click.self="clearSelected">
       <i
         :class="{
@@ -7,7 +13,7 @@
           refresh: true,
           rotate: onLoad
         }"
-        @click="refresh"
+        @click="refresh()"
       ></i>
       <el-breadcrumb separator="/" style="margin: auto 10px;font-size: 18px;">
         <el-breadcrumb-item>
@@ -76,6 +82,7 @@
 import Bucket from '~/components/items/Bucket.vue'
 import Directory from '~/components/items/Directory.vue'
 import Obj from '~/components/items/Object.vue'
+const { handleDrop, blockDefaulBehavior } = require('~/lib/DragnDrop.ts')
 
 export default {
   components: { Bucket, Directory, Obj },
@@ -125,11 +132,21 @@ export default {
     }
   },
   mounted() {
+    // console.log(DragnDrop)
     const { token } = this.$route.query
-    console.log(token)
     this.refresh(token)
   },
   methods: {
+    onDragEnter(e) {
+      blockDefaulBehavior(e)
+    },
+    async onDrop(e) {
+      blockDefaulBehavior(e)
+      console.log(await handleDrop(e))
+    },
+    onDragover(e) {
+      blockDefaulBehavior(e)
+    },
     clearSelected(e) {
       for (const key in this.selected) this.selected[key] = false
       this.selected = { ...this.selected }
